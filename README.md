@@ -23,7 +23,7 @@ install redis server
 
 Ejecutar el jar con el siguiente comando java -jar target/autheo-1.0-SNAPSHOT.jar server autheo-postgresql-develop.yml
 
-Crear usuario 
+Autenticar usuario:
 ip:port/users/{{username}}/tokens  
 { 
 	username: {{username}},
