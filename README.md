@@ -10,3 +10,13 @@ Creacion de stream UDP RTP Multicast
 1. Ejecutar el comando <code>stream.sh (ruta archivo de video) </code>
 2. Desde VLC o cualquier cliente que soporte Streams RTP, ingresar la direccion <code>rtp://239.255.0.1:9001</code>
 3. Reproducir video.
+
+Configuración Autheo
+====================================
+instalar postgress
+
+CREATE DATABASE autheodb;
+CREATE USER autheo WITH PASSWORD 'Autheo1234';
+GRANT ALL PRIVILEGES ON DATABASE "autheodb" to autheo;
+
+install redis server
