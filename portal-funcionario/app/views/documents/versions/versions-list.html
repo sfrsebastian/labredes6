@@ -1,0 +1,26 @@
+<div class="CSSTableGenerator">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Fecha de creación</th>
+      <th>Creador</th>
+      <th>Rol</th>
+      <th>Tamaño</th>
+      <th>Tipo</th>
+      <th>Versión</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="version in documentVersionsList | orderBy: 'creationDate' : true" ng-click="getDocumentVersionFileByVersionNumber(version.id)">
+      <td>{{ fileName }}</td>
+      <td>{{ version.creationDate | amDateFormat:'MM/D/YYYY, h:mm:ss a' }}</td>
+      <td>{{ version.ownerName }}</td>
+      <td>{{ version.ownerRole }}</td>
+      <td>{{ version.size }}</td>
+      <td>{{ version.type }}</td>
+      <td>v. {{ version.version }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

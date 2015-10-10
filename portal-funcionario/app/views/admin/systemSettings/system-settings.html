@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="portlet box red">
+    <div class="portlet-title">
+      <div class="caption">
+        <i class="fa fa-bars"></i> {{'SYSTEM_SIGNATURE_SETTINGS'|translate}}</div>
+    </div>
+
+    <div class="portlet-body">
+      <div class="row">
+        <div class="col-md-11" >
+          <form class="form-horizontal" ng-submit="save()">
+
+            <div class="form-group">
+              <div class="col-md-2 ">
+                <label class="control-label" >{{'SYSTEM_SIGNATURE_KEYSTORE_PATH'|translate}}</label>
+              </div>
+              <div class="col-md-8 ">
+                <input  type="text" class="form-control" ng-model="systemSettings.keystorePath" required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-2">
+                <label class="control-label">{{'SYSTEM_SIGNATURE_CRL_PATH'|translate}}</label>
+              </div>
+              <div class="col-md-8">
+                <input type="text" class="form-control" ng-model="systemSettings.crlPath" required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-2">
+                <label class="control-label">{{'SYSTEM_SIGNATURE_TSA_URL'|translate}}</label>
+              </div>
+              <div class="col-md-8">
+                <input type="text" class="form-control" ng-model="systemSettings.tsaUrl" required/>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="col-md-2">
+                <label class="control-label">{{'SYSTEM_SIGNATURE_TSA_POLICY'|translate}}</label>
+              </div>
+              <div class="col-md-8">
+                <input type="text" class="form-control" ng-model="systemSettings.tsaPolicy" required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-2">
+                <label class="control-label">{{'SYSTEM_DOMAIN'|translate}}</label>
+              </div>
+              <div class="col-md-8">
+                <input type="text" class="form-control" ng-model="systemSettings.domain" required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-2">
+                <label class="control-label">{{'SYSTEM_OCSP_SERVER'|translate}}</label>
+              </div>
+              <div class="col-md-8">
+                <input type="text" class="form-control" ng-model="systemSettings.ocspServer" required/>
+              </div>
+            </div>
+            
+
+            <div class="form-group">
+              <div class="col-md-2">
+                <label class="control-label">{{'SYSTEM_VERIFICATION_TYPE2'|translate}}</label>
+              </div>
+              <div class="col-md-8">
+                <select  class="form-control" ng-model="systemSettings.verificationType" required="" ng-options="item.name as item.name for item in verificationTypes">
+                  <option value="">Select Verification Type</option>
+                </select>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn red"  ng-show="!isSaving">{{'SYSTEM_SIGNATURE_SETTINGS_SAVE'|translate}}</button>
+                <span style="font-size: 30px" ng-show="isSaving">
+                  {{loadingMessage}}
+                  <i class="fa fa-spinner fa-spin"></i>
+                </span>
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,73 @@
+<div ng-controller="AssignTenantColorController">
+
+  <div class="portlet box red">
+    <div class="portlet-title">
+      <div class="caption">
+        <i class="fa fa-bars"></i> {{'TENANT_LIST_TITTLE'|translate}}</div>
+    </div>
+    <div class="portlet-body form">
+      <div class="form-body">
+
+        <h4>{{'ASSIGN_TENANT_COLOR_TITTLE'|translate}}</h4>
+        <br>
+
+        <div class="row">
+
+
+          <div class="col-md-3">
+            <label for="name" class="control-label">{{'ASSIGN_TENANT_COLOR_TENANT_NAME'|translate}}</label>
+          </div>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="name" placeholder="{{'ASSIGN_TENANT_COLOR_TENANT_NAME'|translate}}" ng-disabled="disableOrganizaiton" ng-model="tenant.tenantId" required>
+          </div>
+
+          <br>
+          <br>
+          <br>
+          <br>
+
+          <div class="col-md-3">
+            <label for="name" class="control-label">{{'ASSIGN_TENANT_COLOR_TENANT_COLOR'|translate}}</label>
+          </div>
+          <div class="col-md-3">
+            <input class="form-control" colorpicker="hex" type="text" ng-model="tenant.hexColor" />
+          </div>
+
+          <div class="col-md-1">
+            <label for="name" class="control-label">{{'ASSIGN_TENANT_COLOR_CURRENT_COLOR'|translate}}</label>
+          </div>
+
+          <div class="col-md-1" ng-style="{'border-style':styleDiv[0], 'border-width': styleDiv[1], 'border-color': styleDiv[2], 'background-color': styleDiv[3]}">
+            <label ng-show="colorExist" for="name" class="control-label">{{'ASSIGN_TENANT_COLOR_NO_CURRENT_COLOR'|translate}}</label>
+            <br ng-show="!colorExist">
+          </div>
+
+          <br>
+          <br>
+          <br>
+          <br>
+
+          <div class="col-md-3">
+            <label for="name" class="control-label">{{'ASSIGN_TENANT_COLOR_TENANT_LOGO'|translate}}</label>
+          </div>
+          <div class="col-md-6">
+            <input type="file" onchange="angular.element(this).scope().tenantLogoSelected(this.files)" id="photo" ng-model="tenant.logo">
+          </div>
+          <div class="col-md-3">
+            <img class="col-sm-4" src="{{tenantLogoUrl}}" />
+          </div>
+
+          <div class="col-sm-offset-5 col-sm-6">
+
+            <br>
+            <button type="button" class="btn red" ng-click="createTenantTheme()">{{'USERS_SAVE'|translate}}</button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+

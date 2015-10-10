@@ -1,0 +1,220 @@
+<div class="row">
+  <div class="portlet box red">
+
+    <div class="portlet-title">
+      <div class="caption">
+        <i class="fa fa-bars"></i> {{'USER_TITLE'|translate}}</div>
+    </div>
+
+    <div class="portlet-body">
+      <form class="form-horizontal" ng-submit="saveUser(user)" name="createUserForm" novalidate>
+
+        <div class="form-group">
+          <div class="col-md-11">
+            <div class="col-md-2">
+              <label for="name" class="control-label">{{'USERS_PHOTO'|translate}}</label>
+            </div>
+            <div class="col-md-6">
+              <input type="file" onchange="angular.element(this).scope().fileSelected(this.files)" id="photo" ng-model="user.photo">
+            </div>
+            <div class="col-md-3">
+              <img id="preview" class="col-sm-4"  />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-11 ">
+            <div class="col-md-2">
+              <label for="name" class="control-label">{{'USERS_NAME'|translate}}</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="name" name="name" placeholder="{{'USERS_NAME'|translate}}" ng-model="user.name" required>
+            </div>
+            <div class="col-md-4">
+              <span style="color:red" ng-show="createUserForm.name.$dirty && createUserForm.name.$invalid">
+                <span ng-show="createUserForm.name.$error.required">{{'USERS_NAME_REQUIRED'|translate}}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-11 ">
+            <div class="col-md-2">
+              <label class="control-label">{{'USERS_DOCUMENT_TYPE'|translate}}</label>
+            </div>
+            <div class="col-md-6">
+              <select  class="form-control" ng-model="selectedDocumentType" required="" ng-options="item as item.value for item in documentTypes">
+                <option value="">{{'USERS_SELECT_DOCUMENT_TYPE'|translate}}</option>
+              </select>
+
+            </div>
+            <div class="col-md-4">
+              <span style="color:red" ng-show="createUserForm.documentType.$dirty && createUserForm.documentType.$invalid">
+                <span ng-show="createUserForm.documentType.$error.required">{{'USERS_DOCUMENT_TYPE_REQUIRED'|translate}}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-11 ">
+            <div class="col-md-2">
+              <label for="documentNumber" class="control-label">{{'USERS_DOCUMENT_NUMBER'|translate}}</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="documentNumber" name="documentNumber" placeholder="{{'USERS_DOCUMENT_NUMBER'|translate}}" ng-model="user.documentNumber"
+                     ng-blur="documentNumberChanged(user.documentNumber)" ng-minlength="4"  maxlength="13" required ng-pattern="/^[0-9]*$/" >
+            </div>
+            <div class="col-md-4">
+              <span ng-show="documentNumberValidating">
+              {{loadingMessage}}
+              <i style="font-size: 20px" class="fa fa-spinner fa-spin"></i>
+              </span>
+              <label class="control-label">{{existsUserMessage}}</label>
+              <span style="color:red" ng-show="createUserForm.documentNumber.$dirty && createUserForm.documentNumber.$invalid">
+                <span ng-show="createUserForm.documentNumber.$error.required">{{'USERS_DOCUMENT_NUMBER_REQUIRED'|translate}}</span>
+                <span ng-show="createUserForm.documentNumber.$error.minlength">{{'USERS_DOCUMENT_NUMBER_INVALID'|translate}}</span>
+                <span ng-show="createUserForm.documentNumber.$error.pattern">{{'USERS_DOCUMENT_NUMBER_FORMAT'|translate}}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-11 ">
+            <div class="col-md-2">
+              <label for="email" class="control-label">{{'USERS_EMAIL'|translate}}</label>
+            </div>
+            <div class="col-md-6">
+              <input type="email" class="form-control" id="email" name="email" placeholder="{{'USERS_EMAIL'|translate}}" ng-model="user.email" required >
+            </div>
+            <div class="col-md-4">
+              <span style="color:red" ng-show="createUserForm.email.$dirty && createUserForm.email.$invalid">
+                <span ng-show="createUserForm.email.$error.required">{{'USERS_EMAIL_REQUIRED'|translate}}</span>
+                <span ng-show="createUserForm.email.$error.email">{{'USERS_EMAIL_INVALID'|translate}}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-11 ">
+            <div class="col-md-2">
+              <label for="telephoneNumber" class="control-label">{{'USERS_TELEPHONE_NUMBER'|translate}}</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="telephoneNumber" ng-minlength="7" maxlength="13" name="telephoneNumber" placeholder="{{'USERS_TELEPHONE_NUMBER'|translate}}" ng-pattern="/^[0-9]*$/" ng-model="user.telephoneNumber" required >
+            </div>
+            <div class="col-md-4">
+              <span style="color:red" ng-show="createUserForm.telephoneNumber.$dirty && createUserForm.telephoneNumber.$invalid">
+                <span ng-show="createUserForm.telephoneNumber.$error.required">{{'USERS_TELEPHONE_NUMBER_REQUIRED'|translate}}</span>
+                <span ng-show="createUserForm.telephoneNumber.$error.pattern">{{'USERS_TELEPHONE_NUMBER_FORMAT'|translate}}</span>
+                <span ng-show="createUserForm.telephoneNumber.$error.minlength">{{'USERS_TELEPHONE_MINLENGTH'|translate}}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-11 ">
+            <div class="col-md-2">
+              <label for="address" class="control-label">{{'USERS_ADDRESS'|translate}}</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="address" name="address" placeholder="{{'USERS_ADDRESS'|translate}}" ng-model="user.address" required >
+            </div>
+            <div class="col-md-4">
+              <span style="color:red" ng-show="createUserForm.address.$dirty && createUserForm.address.$invalid">
+                <span ng-show="createUserForm.address.$error.required">{{'USERS_ADDRESS_REQUIRED'|translate}}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-11 ">
+            <div class="col-md-2">
+              <label for="username" class="control-label">{{'USERS_USERNAME'|translate}}</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="username" name="username" ng-blur="usernameChanged(user.username)" placeholder="{{'USERS_USERNAME'|translate}}" ng-model="user.username" required >
+            </div>
+            <div class="col-md-4">
+              <span ng-show="usernameValidating">
+              {{loadingMessage}}
+              <i style="font-size: 20px" class="fa fa-spinner fa-spin"  ></i>
+              </span>
+              <label class="control-label">{{existsUsernameMessage}}</label>
+              <span style="color:red" ng-show="createUserForm.username.$dirty && createUserForm.username.$invalid">
+                <span ng-show="createUserForm.username.$error.required">{{'USERS_USERNAME_REQUIRED'|translate}}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-11 ">
+            <div class="col-md-2">
+              <label for="password" class="control-label">{{'USERS_PASSWORD'|translate}}</label>
+            </div>
+            <div class="col-md-6">
+              <input type="password" class="form-control" id="password" name="password" placeholder="{{'USERS_PASSWORD'|translate}}" ng-model="user.password" required >
+            </div>
+            <div class="col-md-4">
+              <span style="color:red" ng-show="createUserForm.password.$dirty && createUserForm.password.$invalid">
+                <span ng-show="createUserForm.password.$error.required">{{'USERS_PASSWORD_REQUIRED'|translate}}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-11 ">
+            <div class="col-md-2">
+              <label for="confirmPassword" class="control-label">{{'USERS_CONFIRM_PASSWORD'|translate}}</label>
+            </div>
+            <div class="col-md-6">
+              <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="{{'USERS_CONFIRM_PASSWORD'|translate}}" ng-model="confirmPassword" required >
+            </div>
+            <div class="col-md-4">
+              <span style="color:red" ng-show="createUserForm.confirmPassword.$dirty">
+                <span ng-show="createUserForm.confirmPassword.$error.required">{{'USERS_CONFIRM_PASSWORD_REQUIRED'|translate}}</span>
+                <span ng-show="createUserForm.password.$dirty && user.password != confirmPassword">{{'USERS_CONFIRM_PASSWORD_MISMATCH'|translate}}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-11 ">
+            <div class="col-md-2">
+              <label class="control-label">{{'USERS_ROLE'|translate}}</label>
+            </div>
+            <div class="col-md-6">
+              <select  class="form-control" ng-model="selectedBusinessRole" required="" ng-options="item as item.businessRole for item in businessRoles">
+                <option value="">{{'USERS_SELECT_ROLE'|translate}}</option>
+              </select>
+          </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" ng-show="!isSaving" ng-disabled="createUserForm.$invalid || documentExists || usernameExists || user.password != confirmPassword">{{'USERS_SAVE'|translate}}</button>
+            <span style="font-size: 30px" ng-show="isSaving">
+              {{loadingMessage}}
+              <i class="fa fa-spinner fa-spin"></i>
+            </span>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+

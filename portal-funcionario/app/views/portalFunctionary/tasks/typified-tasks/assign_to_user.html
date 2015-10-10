@@ -1,0 +1,17 @@
+<div ng-controller="AssingController" >
+  <div class=" panel-body">
+    <div class=" row">
+      <label class="control-label col-md-3">{{'ASSIGN_TO_USER_ASSIGN_TO'|translate}}</label>
+      <div class="col-md-6">
+        <select class=" seect2_category form-control" ng-options="user.username as user.name for user in UserList" ng-model="userSelected">
+          <option value=""> {{'ASSIGN_TO_USER_CHOOSE_USER'|translate}}</option>
+        </select>
+      </div>
+
+      <button ng-click="assign()" type="button" class=" col-md-offset-1 btn red">{{'ASSIGN_TO_USER_ASSIGN'|translate}}</button>
+
+    </div>
+    <br>
+    <br>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<form name="processConfigStep1Form" ng-submit="next(processInfo)">
+  <div class="form-group">
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-2">
+        <label class="control-label">{{'PROCESS_SETTINGS_NAME'|translate}}</label>
+      </div>
+      <div class="col-md-7">
+        <input class="form-control" type="text" ng-model="processInfo.name" required>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-2">
+        <label class="control-label">{{'PROCESS_SETTINGS_DESCRIPTION'|translate}}</label>
+      </div>
+      <div class="col-md-7">
+        <textarea class="form-control" ng-model="processInfo.description" required></textarea>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-2">
+        <label class="control-label">{{'PROCESS_SETTINGS_TIME_EXPIRE_REQUEST'|translate}}</label>
+      </div>
+      <div class="col-md-7">
+        <input class="form-control" type="number" ng-model="processInfo.timeToExpireRequest" required>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-2">
+        <label class="control-label">{{'PROCESS_SETTINGS_TIME_EXPIRE_PROCESS'|translate}}</label>
+      </div>
+      <div class="col-md-7">
+        <input class="form-control" type="number" ng-model="processInfo.timeToExpireProcess" required>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-2">
+        <label class="control-label">{{'PROCESS_SETTINGS_TIME_ALERT_REQUEST'|translate}}</label>
+      </div>
+      <div class="col-md-7">
+        <input class="form-control" type="number" ng-model="processInfo.timeToAlertRequest" required>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-2">
+        <label class="control-label">{{'PROCESS_SETTINGS_TIME_ALERT_PROCESS'|translate}}</label>
+      </div>
+      <div class="col-md-7">
+        <input class="form-control" type="number" ng-model="processInfo.timeToAlertProcess" required>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-2">
+        <label class="control-label">{{'PROCESS_SETTINGS_ALLOW_REVISOR_UPLOAD_DOCUMENTS'|translate}}</label>
+      </div>
+      <div class="col-md-2">
+        <input class="form-control" type="checkbox" name="allowRevisorUploadDocuments" ng-model="processInfo.allowRevisorUploadDocuments" ng-click="setValidity()">
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-2">
+        <label class="control-label">{{'PROCESS_SETTINGS_SIGN_UPLOADED_DOCUMENTS'|translate}}</label>
+      </div>
+      <div class="col-md-2">
+        <input class="form-control" type="checkbox" name="signUploadedDocuments" ng-model="processInfo.signUploadedDocuments" ng-click="setValidity()">
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row pull-right col-md-3">
+      <button type="submit" class="btn red" >{{'PROCESS_SETTINGS_NEXT'|translate}}</button>
+    </div>
+
+  </div>
+</form>

@@ -1,0 +1,122 @@
+<div class="row">
+  <div class="portlet box red">
+    <div class="portlet-title">
+      <div class="caption">
+        <i class="fa fa-bars"></i>{{'NEW_TENANT_SETTINGS_TITTLE'|translate}}</div>
+    </div>
+
+    <div class="portlet-body form">
+      <div class="form-body">
+        <form class="form-horizontal" name="tenantForm" ng-submit="saveTenant(tenant)">
+
+          <h4>{{'CREATE_TENANT_ADMIN_TITTLE'|translate}}</h4>
+          <br>
+
+          <div class="row">
+            <div class="col-md-3">
+              <label for="name" class="control-label">{{'CREATE_TENANT_ADMIN_PHOTO'|translate}}</label>
+            </div>
+            <div class="col-md-6">
+              <input type="file" onchange="angular.element(this).scope().adminPhotoSelected(this.files)" id="photo" ng-model="tenant.photo">
+            </div>
+            <div class="col-md-3">
+              <img  src="{{adminPhotoUrl}}" />
+            </div>
+            <br>
+            <br><br>
+            <div class="col-md-3">
+              <label for="name" class="control-label">{{'CREATE_TENANT_ORGANIZATION_NAME'|translate}}</label>
+            </div>
+            <div class="col-md-8">
+              <input type="text" class="form-control" id="organizationId" placeholder="{{'CREATE_TENANT_ORGANIZATION_NAME'|translate}}" ng-model="tenant.organizationId" reg-exp-require="/^[a-zA-Z0-9_]*$/" required>
+            </div>
+            <br>
+            <br><br>
+            <div class="col-md-3">
+              <label for="name" class="control-label">{{'CREATE_TENANT_ADMIN_NAME'|translate}}</label>
+            </div>
+            <div class="col-md-8">
+              <input type="text" class="form-control" id="name" placeholder="{{'CREATE_TENANT_ADMIN_NAME'|translate}}" ng-model="tenant.name" reg-exp-require="/^[a-zA-Z0-9_]*$/" required>
+            </div>
+            <br>
+            <br><br>
+            <div class="col-md-3">
+              <label class="control-label">{{'CREATE_TENANT_ADMIN_DOCUMENT_TYPE'|translate}}</label>
+            </div>
+            <div class="col-md-8">
+              <input type="text" class="form-control" id="documentType" placeholder="{{'CREATE_TENANT_ADMIN_DOCUMENT_TYPE'|translate}}" ng-model="tenant.documentType" reg-exp-require="/^[a-zA-Z0-9_]*$/" required >
+            </div>
+            <br>
+            <br><br>
+            <div class="col-md-3">
+              <label for="documentNumber" class="control-label">{{'CREATE_TENANT_ADMIN_DOCUMENT_NUMBER'|translate}}</label>
+            </div>
+            <div class="col-md-8">
+              <input type="text" class="form-control" id="documentNumber" placeholder="{{'CREATE_TENANT_ADMIN_DOCUMENT_NUMBER'|translate}}" ng-model="tenant.documentNumber" reg-exp-require="/^[0-9]*$/" required >
+            </div>
+            <br>
+            <br><br>
+            <div class="col-md-3">
+              <label for="email" class="control-label">{{'CREATE_TENANT_ADMIN_EMAIL'|translate}}</label>
+            </div>
+            <div class="col-md-8">
+              <input type="email" class="form-control" id="email" placeholder="{{'CREATE_TENANT_ADMIN_EMAIL'|translate}}" ng-model="tenant.email" reg-exp-require="/^[a-zA-Z0-9_@]*$/" required >
+            </div>
+             <br><br><br>
+            <div class="col-md-3">
+              <label for="username" class="control-label">{{'CREATE_TENANT_USER_NAME'|translate}}</label>
+            </div>
+            <div class="col-md-8">
+              <input type="text" class="form-control" id="username" placeholder="{{'CREATE_TENANT_USER_NAME'|translate}}" ng-model="tenant.username"  reg-exp-require="/^[a-zA-Z0-9_]*$/"required >
+            </div>
+          <br><br><br>
+            <div class="col-md-3">
+              <label for="username" class="control-label">{{'CREATE_TENANT_ADDRESS'|translate}}</label>
+            </div>
+            <div class="col-md-8">
+              <input type="text" class="form-control" id="address" placeholder="{{'CREATE_TENANT_ADDRESS'|translate}}" ng-model="tenant.address" reg-exp-require="/^[a-zA-Z0-9_-]*$/" required >
+            </div>
+          <br>
+          <br>
+            <br>
+            <div class="col-md-3">
+              <label for="username" class="control-label">{{'CREATE_TENANT_TELEPHONE'|translate}}</label>
+            </div>
+            <div class="col-md-8">
+              <input type="text" class="form-control" id="telephone" placeholder="{{'CREATE_TENANT_TELEPHONE'|translate}}" ng-model="tenant.telephone" reg-exp-require="/^[0-9]*$/" required >
+            </div>
+          <br>
+          <br>
+            <br>
+            <div class="col-md-3">
+              <label for="password" class="control-label">{{'CREATE_TENANT_PASSWORD'|translate}}</label>
+            </div>
+            <div class="col-md-8">
+              <input type="password" class="form-control" id="password" placeholder="{{'CREATE_TENANT_PASSWORD'|translate}}" ng-model="password" required >
+            </div>
+          <br>
+          <br>
+            <br>
+            <div class="col-md-3">
+              <label for="password" class="control-label">{{'CREATE_TENANT_PASSWORD_CONFIRM'|translate}}</label>
+            </div>
+            <div class="col-md-8">
+              <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" placeholder="{{'CREATE_TENANT_PASSWORD_CONFIRM'|translate}}" ng-model="passwordConfirmation" required >
+            <span  class="text-danger" style="align-self: center" ng-show="tenantForm.passwordConfirmation.$dirty && password != passwordConfirmation">{{'CREATE_TENANT_PASSWORD_NO_MATCH'|translate}}</span>
+            </div>
+          </div>
+
+           <div class="row">
+              <br>
+              <div class="col-sm-offset-5 col-sm-6">
+                <button type="submit" class="btn red" ng-show="!isSaving">{{'USERS_SAVE'|translate}}</button>
+              </div>
+            </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>

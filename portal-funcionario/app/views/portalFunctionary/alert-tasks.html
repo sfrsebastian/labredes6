@@ -1,0 +1,41 @@
+<div class="portlet box red">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-bars"></i> {{'ALERT_TASKS_TITLE'|translate}}</div>
+  </div>
+  <div class="portlet-body form">
+    <div class="form-body">
+
+      <div class="col-md-5 col-md-offset-4" ng-show="showSpinner">
+        <h3>{{'ALERTS_LOADING_DATA'|translate}}</h3>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="col-md-3 col-md-offset-2">
+          <p><i style="font-size: 120px" class="fa fa-spinner fa-spin"></i></p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+
+      <div ng-show="!showSpinner" class="CSSTableGenerator">
+
+        <table ng-table="tableParams" show-filter="true" class="table table-bordered">
+          <tr ng-repeat="task in $data" ng-class="{warning: task.status == 'abouttoexpire' , danger: task.status == 'expired'}" ng-click="viewDetail(task)">
+            <td data-title="'ALERT_TASKS_CASE_ID' | translate" filter="{ 'processId': 'text' }" sortable="'processId'" align="center"  >{{task.processInstanceId}}</td>
+            <td data-title="'ALERT_TASKS_PROCESS' | translate" filter="{ 'processName': 'text' }" sortable="'processName'" align="center" >{{task.processName}}</td>
+            <td data-title="'ALERT_TASKS_SUBJECT' | translate" filter="{ 'taskName': 'text' }" sortable="'taskName'" align="center" >{{task.taskNameWhereProcessIs}}</td>
+            <td data-title="'ALERT_TASKS_DATE_RECEIVED' | translate" sortable="'taskCreated'" align="center" >{{task.creationDate | amDateFormat:'D/MM/YYYY, h:mm:ss a'}}</td>
+            <td data-title="'ALERT_TASKS_STATE' | translate" filter="{ 'status': 'text' }" align="center" sortable="'status'" >{{task.status == 'expired'?'Vencido':'Próximo a vencer'}}</td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

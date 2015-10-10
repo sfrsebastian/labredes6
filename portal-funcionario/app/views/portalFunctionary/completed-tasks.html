@@ -1,0 +1,93 @@
+<div class="portlet box red">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-bars"></i> {{'COMPLETED_TASKS_TITLE'|translate}}
+    </div>
+  </div>
+  <div class="portlet-body form">
+    <div class="form-body">
+
+      <form class="form-horizontal" name="completedTasksForm" id="completedTasksForm">
+
+        <div class="col-md-6">
+
+          <input type="text" id="procedureName" class="form-control" placeholder="{{'COMPLETED_TASKS_PROCESS_NAME' | translate}}" ng-model="queryJson.procedureName" reg-exp-require="/^[a-zA-Z0-9]+$/"><br>
+          <input type="text" id="caseId" class="form-control" placeholder="{{'COMPLETED_TASKS_CASE_NUMBER' | translate}}" ng-model="queryJson.caseId" reg-exp-require="/^[a-zA-Z0-9]+$/"><br>
+          <input type="text" id="assignedPerson" class="form-control" placeholder="{{'COMPLETED_TASKS_ASSIGNED_NAME' | translate}}" ng-model="queryJson.assignedPerson" reg-exp-require="/^[a-zA-Z0-9]+$/"><br>
+
+          <div class="input-group">
+		          <span class="input-group-btn">
+		            <button type="button" class="form-control2" ng-click="open($event, 'from')"><i class="glyphicon glyphicon-calendar"></i></button>
+		          </span>
+            <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="completedDateFrom" is-open="fromOpened" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" placeholder="{{'COMPLETED_TASKS_COMPLETED_DATE_FROM' | translate}}"/><br>
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <select class="form-control" ng-init="queryJson.userDocumentType = typesOfDocuments[0]" ng-model="queryJson.userDocumentType" ng-options="document for document in typesOfDocuments"></select><br>
+          <input type="text" id="userDocumentNumber" class="form-control" placeholder="{{'COMPLETED_TASKS_CITIZEN_DOCUMENT_NUMBER' | translate}}" ng-model="queryJson.userDocumentNumber" reg-exp-require="/^[a-zA-Z0-9]+$/"><br>
+
+          <input type="text" id="userName" class="form-control" placeholder="{{'COMPLETED_TASKS_CITIZEN_NAME' | translate}}" ng-model="queryJson.userName" reg-exp-require="/^[a-zA-Z0-9]+$/"><br>
+
+          <div class="input-group">
+		          <span class="input-group-btn">
+		            <button type="button" class="form-control2" ng-click="open($event, 'to')"><i class="glyphicon glyphicon-calendar"></i></button>
+		          </span>
+            <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="completedDateTo" is-open="toOpened" close-text="Cerrar" current-text="Hoy" clear-text="Borrar" placeholder="{{'COMPLETED_TASKS_COMPLETED_DATE_TO' | translate}}"/><br>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-2 col-md-offset-5">
+            <br>
+            <button class="btn red" type="submit" ng-click="findTasks()">{{'COMPLETED_TASKS_SEARCH'|translate}}</button>
+          </div>
+        </div>
+
+        <br/>
+
+        <div class="row">
+          <div class="col-md-5 col-md-offset-4" ng-show="showSpinner">
+            <h3>{{'REVIEWED_REQUEST_LOADING_DATA'|translate}}</h3>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="col-md-3 col-md-offset-2">
+              <p><i style="font-size: 120px" class="fa fa-spinner fa-spin"></i></p>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+          </div>
+        </div>
+
+        <div class="CSSTableGenerator" ng-show="!showSpinner && showTable">
+
+          <table ng-table="tableParams" show-filter="true" class="table table-bordered">
+
+            <tr ng-repeat="task in $data" ng-click="viewDetail(task)">
+              <td data-title="'COMPLETED_TASKS_TABLE_PROCESS' | translate" sortable="'procedureName'" align="center">{{task.procedureName}}</td>
+              <td data-title="'COMPLETED_TASKS_TABLE_CASE' | translate" sortable="'caseId'" align="center">{{task.caseId}}</td>
+              <td data-title="'COMPLETED_TASKS_TABLE_ASSIGNED_DATE' | translate" sortable="'assignedDate'" align="center">{{task.assignedDate | amDateFormat:'D/MM/YYYY, h:mm:ss a'}}</td>
+              <td data-title="'COMPLETED_TASKS_TABLE_ASSIGNED_USER' | translate" sortable="'userNameLastActor'" align="center">{{task.userNameLastActor}}</td>
+              <td data-title="'COMPLETED_TASKS_TABLE_USER' | translate" sortable="'userName'" align="center">{{task.userName}}</td>
+              <td data-title="'COMPLETED_TASKS_TABLE_USER_DOCUMENT_TYPE' | translate" sortable="'userDocumentType'" align="center">{{task.userDocumentType}}</td>
+              <td data-title="'COMPLETED_TASKS_TABLE_USER_DOCUMENT_NUMBER' | translate" sortable="'userDocumentNumber'" align="center">{{task.userDocumentNumber}}</td>
+              <td data-title="'COMPLETED_TASKS_TABLE_ACTIVITY' | translate" sortable="'descriptionLastEvent'" align="center">{{task.descriptionLastEvent}}</td>
+            </tr>
+
+          </table>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+

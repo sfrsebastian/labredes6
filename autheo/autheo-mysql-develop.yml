@@ -1,0 +1,49 @@
+server:
+  type: simple
+  applicationContextPath: /autheo/api
+  adminContextPath: /autheo/admin
+  connector:
+    type: http
+    port: 9002
+
+logging:
+  level: INFO
+  loggers:
+    io.dropwizard: INFO
+  appenders:
+    - type: console
+      threshold: ALL
+      timeZone: UTC
+      target: stdout
+      logFormat: # TODO
+    - type: file
+      currentLogFilename: ./logs/autheo.log
+      threshold: ALL
+      archive: true
+      archivedLogFilenamePattern: ./logs/autheo-%d.log
+      archivedFileCount: 5
+      timeZone: UTC
+      logFormat: # TODO
+
+sqlDbConfig:
+  
+  # the name of your JDBC driver
+  driverClass: com.mysql.jdbc.Driver
+
+  # the JDBC URL
+  url: jdbc:mysql://localhost/autheodb
+
+  # the username
+  username: autheo
+    
+  # the password
+  password: Autheo1234
+  
+  removeAbandonedTimeoutInSeconds: 120
+  ableToRemoveAbandonedConnections: true
+
+redisConfig:
+
+  host: localhost
+  port: 6379
+  database: 0

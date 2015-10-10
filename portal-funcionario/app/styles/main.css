@@ -1,0 +1,212 @@
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.pdfViewer {
+  width: 800px;
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+.rotate0 {-webkit-transform: rotate(0deg); transform: rotate(0deg); }
+.rotate90 {-webkit-transform: rotate(90deg); transform: rotate(90deg); }
+.rotate180 {-webkit-transform: rotate(180deg); transform: rotate(180deg); }
+.rotate270 {-webkit-transform: rotate(270deg); transform: rotate(270deg); }
+
+.form-control2:focus {
+  border-color: #66afe9;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+  outline: 0 none;
+}
+
+.form-control2 {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
+    display: block;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+.ngdialog-overlay
+{
+  position: absolute !important;
+  bottom: -130%;
+}
+
+@keyframes fadeOut
+{
+  from { opacity: 1.0; }
+  to { opacity: 0.0; }
+}
+
+@-webkit-keyframes fadeOut
+{
+  from { opacity: 1.0 }
+  to { opacity: 0.0 }
+}
+
+.fade-out
+{
+  animation: fadeOut 8s infinite;
+  -webkit-animation: fadeOut 8s infinite;
+}
+.webodfeditor-toolbarcontainer
+{
+  position: static !IMPORTANT;
+}
+
+.title-negro {
+  font-size: 1.2em;
+  font-weight: 400;
+  color: #000;
+  text-transform: uppercase;
+}
+.title-negro2 {
+  font-size: 1.3em;
+  font-weight: 400;
+  color: #000;
+  text-transform: uppercase;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.title-rojo {
+  font-size: 1.2em;
+  font-weight: 400;
+  color: #E6400C;
+  text-transform: uppercase;
+}
+.title-rojo2 {
+  font-size: 1.3em;
+  font-weight: 400;
+  color: #E6400C;
+  text-transform: uppercase;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.texto-rojo-p {
+  font-size: 1em;
+  font-weight: 300;
+  color: #EB1C23;
+}
+.paso-rojo {
+  font-size: 1.1em;
+  line-height: 1.4em;
+  font-weight: bold;
+  color: #CE2F57;
+  margin-right: auto;
+  margin-left: auto;
+  min-width: 150px;
+  padding-right: 5px;
+  padding-left: 5px;
+  float: left;
+}
+.icono-grande {
+  font-size: 2.3em;
+  color: #BCBCBC;
+  font-family: FontAwesome;
+  padding: 10px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.icono-grande i {
+  font-size: 2.3em;
+  color: #BCBCBC;
+  font-family: FontAwesome;
+  padding: 15px;
+}
+
+.img-logo {
+  margin-top: 5px;
+  width: 250px;
+  height: 60px;
+}
+
+.a-black{
+  color: #000000;
+}

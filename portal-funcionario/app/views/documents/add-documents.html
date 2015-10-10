@@ -1,0 +1,28 @@
+<div class="col-md-12" ng-controller="AddDocumentsController">
+
+  	<h4 class="form-section" ng-click="changeIcon()" data-toggle="collapse" data-target="#addDocumentCollapse" aria-expanded="false" aria-controls="addDocumentCollapse"><i ng-class="addDocumentsIconClass"></i>{{'ADD_DOCUMENTS_TITLE'|translate}}</h4>
+
+  	<div class="col-md-offest-1 col-md-11 collapse" id="addDocumentCollapse">
+
+	    <div class="form-group row" ng-repeat="evidence in evidences track by $index" ng-init="evidence.index = $index">
+	      <span class="btn btn-default glyphicon-minus col-md-offest-1 col-md-1" ng-click="removeFile($index)"></span>
+	      <label for="{{'evidenceInput' + $index}}" class="col-md-1 text-right">{{'ADD_DOCUMENTS_EVIDENCE_LABEL'|translate}}</label>
+
+	      <input type="file" id="{{'evidenceInput' + $index}}" style="display: none;" onchange="angular.element(this).scope().uploadFile(this.files, 'evidence'+angular.element(this).scope().$index, angular.element(this).scope().$index)" ng-disabled="spinners['evidence' + $index] && evidence.name == 'No se ha seleccionado archivo.'" />
+
+	      <input type="button" class="col-md-2" value="{{'ADD_DOCUMENTS_BROWSE_BUTTON'|translate}}" onclick="document.getElementById('evidenceInput'+angular.element(this).scope().$index).click();" ng-disabled="spinners['evidence' + $index] && evidence.name == 'No se ha seleccionado archivo.'" />
+
+	      <label class="col-md-3" ng-if="!spinners['evidence' + $index] || evidence.name != 'No se ha seleccionado archivo.'">{{evidence.name}}</label>
+
+	      <span class="col-md-3" ng-if="spinners['evidence' + $index]" us-spinner="{radius:7, width:2, length: 4}"></span>
+
+	    	<span class="btn btn-default col-md-1" ng-click="clearFile('evidence' + $index, $index)" ng-disabled="spinners['evidence' + $index]">{{'ADD_DOCUMENTS_CLEAR_BUTTON'|translate}}</span>
+	      	<span class="btn btn-default col-md-2" ng-click="downloadFile(evidence.name, 'evidence' + $index, $index)" ng-disabled="evidence.name === noFileSelectedMessage || spinners['evidence' + $index] ">{{'ADD_DOCUMENTS_DOWNLOAD_BUTTON'|translate}}</span>
+	    </div>
+	    <div class="form-group row">
+	      <span class="btn btn-default glyphicon-plus col-md-offset-3 col-md-3" ng-show="evidences.length < 10" ng-click="evidences.push({name: noFileSelectedMessage})"> {{'ADD_DOCUMENTS_ADD_EVIDENCE_BUTTON'|translate}}</span>
+	    </div>
+
+    </div>
+
+</div>

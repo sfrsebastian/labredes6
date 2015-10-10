@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="portlet box red">
+    <div class="portlet-title">
+      <div class="caption">
+        <i class="fa fa-bars"></i> {{'REQUEST_DETAILS_TITTLE'|translate}}</div>
+    </div>
+    <div class="portlet-body form">
+
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-5 col-md-offset-4" ng-show="!showRequestView">
+            <h3>{{'REQUEST_DETAILS_DOWNLOAD_DATA'|translate}}</h3>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="col-md-3 col-md-offset-2">
+              <p><i style="font-size: 120px" class="fa fa-spinner fa-spin"></i></p>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+
+      <!-- BEGIN FORM-->
+      <form ng-show="showRequestView" action="#" class="form-horizontal">
+        <div class="form-body">
+          <!--details-->
+          <div class="row">
+            <div class="col-md-12" ng-include="'views/ventanilla-unica/requests/request-detail.html'"></div>
+          </div>
+        </div>
+
+        <!--documents-->
+        <div class="row">
+          <div class="col-md-12" ng-include="'views/documents/documents-list.html'"></div>
+        </div>
+
+        <!--add documents-->
+        <div class="row" ng-if="showAddDocuments && isPending">
+          <div class="col-md-12" ng-include="'views/documents/add-documents.html'"></div>
+        </div>
+
+        <div class="form-actions" ng-show="isPending">
+          <div class="row">
+            <div class="col-md-6">
+              <div>
+                <label class="control-label col-md-3">{{'REQUEST_DETAILS_ASSIGN_TO'|translate}}</label>
+                <div class="col-md-9">
+                  <select class="seect2_category form-control" ng-options="boss as boss.name for boss in bossList" ng-model="bossSelected.selected">
+                    <option value=""> {{'REQUEST_DETAILS_SELECT'|translate}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                  <button ng-click="openObservations()" type="button" class="btn red" ng-disabled="disableButtons">{{'REQUEST_DETAILS_APPROVE'|translate}}</button>
+                  <button ng-click="showRejectionDialog(currentRequest.id)" type="button" class="btn default" ng-disabled="disableButtons">{{'REQUEST_DETAILS_REJECT'|translate}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- END FORM-->
+    </div>
+  </div>
+</div>

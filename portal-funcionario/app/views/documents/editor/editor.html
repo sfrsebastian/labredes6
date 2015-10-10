@@ -1,0 +1,47 @@
+<div id="editorContainer" class="col-md-12" style="height: 600px;">
+</div>
+
+<script type="text/javascript">
+
+	//Funcion que se llama despues de cargar applet completamente
+    function detectarCarga() {
+
+    }
+
+    function setSign(value) {
+
+      if(value!='') {
+
+        var mainDivElement = document.getElementById('editorTagId');
+        var scope = angular.element(mainDivElement).scope();
+        scope.safeApply(function(){
+            scope.signedHash = value;
+            scope.valueChanged = true;
+        });
+
+      } else {
+
+        var mainDivElement = document.getElementById('editorTagId');
+        var scope = angular.element(mainDivElement).scope();
+        scope.safeApply(function(){
+          scope.isLoading = false;
+          var message = "Ud no ha seleccionado ningun certificado. Para continuar recargue la página";
+          $.notify({
+            // options
+            message: message
+          },{
+            // settings
+            type: 'danger',
+            z_index : 9999,
+            delay : 10000,
+            placement:{
+              align:'center'
+            }
+          });
+        });
+      }
+
+    }
+</script>
+
+<div id='javafxappplaceholder'></div>

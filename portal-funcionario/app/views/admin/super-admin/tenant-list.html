@@ -1,0 +1,35 @@
+<div class="portlet box red">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-bars"></i> {{'TENANT_LIST_TITTLE'|translate}}</div>
+  </div>
+  <div class="portlet-body form">
+    <div class="form-body">
+
+      <div class="col-md-5 col-md-offset-4" ng-show="showSpinner">
+        <h3>{{'TENANT_LIST_LOADING_DATA'|translate}}</h3>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="col-md-3 col-md-offset-2">
+          <p><i style="font-size: 120px" class="fa fa-spinner fa-spin"></i></p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+
+      <div ng-show="!showSpinner" class="CSSTableGenerator">
+
+        <ul>
+          <li ng-repeat="tenant in tenantList" ng-click="editTenant(tenant.tenantName)">{{tenant.tenantName}}<br><br></li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</div>

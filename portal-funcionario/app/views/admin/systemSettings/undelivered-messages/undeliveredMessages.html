@@ -1,0 +1,62 @@
+<div class="portlet box red">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-bars"></i> {{'UNDELIVERED_MESSAGES_TITTLE'|translate}}</div>
+  </div>
+  <div class="portlet-body form">
+    <div class="form-body">
+
+      <div class="col-md-5 col-md-offset-4" ng-show="showSpinner">
+        <h3>{{'UNDELIVERED_MESSAGES_LOADING_DATA'|translate}}</h3>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="col-md-3 col-md-offset-2">
+          <p><i style="font-size: 120px" class="fa fa-spinner fa-spin"></i></p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+
+      <div ng-show="!showSpinner" class="CSSTableGenerator">
+
+        <div class="row">
+
+          <div class="col-md-6" style=" border: 1px solid gray;">
+
+            <br>
+            <table>
+              <tr>
+                <th>{{'UNDELIVERED_MESSAGES_SELECTION'|translate}}</th>
+                <th>{{'UNDELIVERED_MESSAGES_USER'|translate}}</th>
+                <th>{{'UNDELIVERED_MESSAGES_PROCESS'|translate}}</th>
+              </tr>
+              <tr ng-repeat="message in undeliveredMessagesList" ng-click="showMessage(message)">
+                <td><input type="checkbox" checklist-model="cheked.messages" checklist-value="message"></td>
+                <td>{{message.username}}</td>
+                <td>{{message.processKey}}</td>
+              </tr>
+            </table>
+
+          </div>
+
+          <div class="col-md-6">
+            <h4 ng-show="!showMessageBoolean">{{'UNDELIVERED_MESSAGES_UNSELECTED_MESSAGE'|translate}}</h4>
+            <json-formatter json="currentMessage" open="1" ng-show="showMessageBoolean"></json-formatter>
+          </div>
+
+          <div class="col-md-offset-2 col-md-10">
+            <button type="submit" ng-click="sendMessagesIds()" class="btn red ng-binding">Enviar</button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

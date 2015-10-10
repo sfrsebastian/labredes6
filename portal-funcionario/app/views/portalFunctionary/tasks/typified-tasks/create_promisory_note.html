@@ -1,0 +1,13 @@
+<div ng-controller="CreatePromisoryNoteController">
+  <div class="row col-md-12">
+    <iframe ng-show="invoiceReady" width="100%" src="../../../../files/pagare.pdf" height="600" scrolling="true"></iframe>
+    <span class="col-md-12 text-center" style="font-size: 40px;" ng-show="isLoading" >
+    {{loadingMessage}}
+    <i class="fa fa-spinner fa-spin"></i>
+  </span>
+  </div>
+  <div class="row col-md-offset-5">
+    <button type="button" class="btn red" ng-click="generatePromisoryNote()">Generar Pagaré</button>
+    <button type="button" class="btn red" ng-click="continue()">Continuar</button>
+  </div>
+</div>

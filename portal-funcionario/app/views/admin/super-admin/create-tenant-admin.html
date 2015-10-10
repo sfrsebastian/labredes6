@@ -1,0 +1,96 @@
+<div ng-controller="CerateTenantAdminController">
+
+  <h4>{{'CREATE_TENANT_ADMIN_TITTLE'|translate}}</h4>
+  <br>
+
+    <div class="row">
+      <div class="col-md-3">
+        <label for="name" class="control-label">{{'CREATE_TENANT_ADMIN_PHOTO'|translate}}</label>
+      </div>
+      <div class="col-md-6">
+        <input type="file" onchange="angular.element(this).scope().adminPhotoSelected(this.files)" id="photo" ng-model="$parent.tenant.adminData.photo">
+      </div>
+      <div class="col-md-3">
+        <img class="col-sm-4" src="{{adminPhotoUrl}}" />
+      </div>
+    </div>
+
+    <br>
+
+
+    <div class="row">
+      <div class="col-md-3">
+        <label for="name" class="control-label">{{'CREATE_TENANT_ORGANIZATION_NAME'|translate}}</label>
+      </div>
+      <div class="col-md-8">
+        <input type="text" class="form-control" id="organizationId" placeholder="{{'CREATE_TENANT_ORGANIZATION_NAME'|translate}}" ng-model="$parent.tenant.adminData.organization" required>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-3">
+        <label for="name" class="control-label">{{'CREATE_TENANT_ADMIN_NAME'|translate}}</label>
+      </div>
+      <div class="col-md-8">
+        <input type="text" class="form-control" id="name" placeholder="{{'CREATE_TENANT_ADMIN_NAME'|translate}}" ng-model="$parent.tenant.adminData.name" required>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-3">
+        <label class="control-label">{{'CREATE_TENANT_ADMIN_DOCUMENT_TYPE'|translate}}</label>
+      </div>
+      <div class="col-md-8">
+        <input type="text" class="form-control" id="documentType" placeholder="{{'CREATE_TENANT_ADMIN_DOCUMENT_TYPE'|translate}}" ng-model="$parent.tenant.adminData.documentType" required >
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-3">
+        <label for="documentNumber" class="control-label">{{'CREATE_TENANT_ADMIN_DOCUMENT_NUMBER'|translate}}</label>
+      </div>
+      <div class="col-md-8">
+        <input type="text" class="form-control" id="documentNumber" placeholder="{{'CREATE_TENANT_ADMIN_DOCUMENT_NUMBER'|translate}}" ng-model="$parent.tenant.adminData.documentNumber" required >
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-3">
+        <label for="email" class="control-label">{{'CREATE_TENANT_ADMIN_EMAIL'|translate}}</label>
+      </div>
+      <div class="col-md-8">
+        <input type="email" class="form-control" id="email" placeholder="{{'CREATE_TENANT_ADMIN_EMAIL'|translate}}" ng-model="$parent.tenant.adminData.email" required >
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-3">
+        <label for="username" class="control-label">{{'CREATE_TENANT_USER_NAME'|translate}}</label>
+      </div>
+      <div class="col-md-8">
+        <input type="text" class="form-control" id="username" placeholder="{{'CREATE_TENANT_USER_NAME'|translate}}" ng-model="$parent.tenant.adminData.username" required >
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-3">
+        <label for="password" class="control-label">{{'CREATE_TENANT_PASSWORD'|translate}}</label>
+      </div>
+      <div class="col-md-8">
+        <input type="password" class="form-control" id="password" placeholder="{{'CREATE_TENANT_PASSWORD'|translate}}" ng-model="$parent.tenant.adminData.password" required >
+      </div>
+    </div>
+
+</div>
