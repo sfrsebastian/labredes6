@@ -21,4 +21,4 @@ GRANT ALL PRIVILEGES ON DATABASE "autheodb" to autheo;
 
 install redis server
 
-Ejecutar el jar con el siguiente comando java -jar autheo-1.0-SNAPSHOT server autheo-postgresql-develop.yml
+Ejecutar el jar con el siguiente comando java -jar autheo-1.0-SNAPSHOT.jar server autheo-postgresql-develop.yml
