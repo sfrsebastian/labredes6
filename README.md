@@ -1,1 +1,12 @@
-# labredes6
+Configuracion Servidor con VLC
+==============================
+
+1. Descargar la aplicacion VLC Media Player
+2. Definir en archivo *bash_profile (OSX)* o *bashrc (Linux)* el siguiente alias: <code>alias vlc='(ruta archivo VLC ejecutable) -I rc' </code>
+3. Comprobar el funcionamiento de la linea de comandos escribiendo en la linea de comandos <code>vlc</code>
+
+Creacion de stream UDP RTP Multicast
+====================================
+1. Ejecutar el comando <code>stream.sh (ruta archivo de video) </code>
+2. Desde VLC o cualquier cliente que soporte Streams RTP, ingresar la direccion <code>rtp://239.255.0.1:9001</code>
+3. Reproducir video.
