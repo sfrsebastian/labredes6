@@ -20,3 +20,5 @@ CREATE USER autheo WITH PASSWORD 'Autheo1234';
 GRANT ALL PRIVILEGES ON DATABASE "autheodb" to autheo;
 
 install redis server
+
+Ejecutar el jar con el siguiente comando java -jar autheo-1.0-SNAPSHOT server autheo-postgresql-develop.yml
