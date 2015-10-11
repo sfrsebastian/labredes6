@@ -16,7 +16,6 @@ sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
 
 try:
 	while(cap.isOpened()):
-		print 'sending frame'
 		ret, frame = cap.read()
 		frame = cv2.resize(frame, (320, 240))
 		cv2.imshow('Server',frame)

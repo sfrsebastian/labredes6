@@ -1,17 +1,19 @@
 from Tkinter import *  # AFAIK Tkinter is always capitalized
 from tkFileDialog import askopenfilename
+from client import Client
 
 class App:
 	characterPrefix = "character_"
-	def __init__(self, master):
-		self.master = master  # You'll want to keep a reference to your root window
+	def __init__(self, master, client):
+		self.client = client
+		self.master = master
 		frame = Frame(master)
 		frame.pack()
 
-		self.charbox = Listbox(frame)  # You'll want to keep this reference as an attribute of the class too.
-		for chars in []:
-			self.charbox.insert(END, chars)
-		self.charbox.grid(row = 1, column = 0, rowspan = 5)
+		self.videos = Listbox(frame)
+		for video in client.videos:
+			self.videos.insert(END, video)
+		self.videos.grid(row = 1, column = 0, rowspan = 5)
 		charadd = Button(frame, text = " Agregar  ", command = self.addVideo).grid(row = 1, column = 1)
 		charremove = Button(frame, text = " Eliminar ", command = self.removeVideo).grid(row = 2, column = 1)
 		charedit = Button(frame, text = "Reproducir", command = self.playVideo).grid(row = 3, column = 1)
@@ -20,8 +22,8 @@ class App:
 		def create():
 			nombre_video = characterEntry.get()
 			filename = askopenfilename()
-			#funcion de agregar video
-			self.charbox.insert(END, nombre_video)
+			client.add_video(name=nombre_video, path = filename)
+			self.videos.insert(END, nombre_video)
 			t.destroy()
 
 		t = Toplevel(root)  # Creates a new window
@@ -35,20 +37,18 @@ class App:
 		cancelButton.grid(row=2, column=1)
 
 	def removeVideo(self):
-		for index in self.charbox.curselection():
-			item = self.charbox.get(int(index))
-			self.charbox.delete(int(index))
-			try:
-				os.remove(characterPrefix + item)
-			except IOError:
-				print "Could not delete file", characterPrefix + item
+		for index in self.videos.curselection():
+			item = self.videos.get(int(index))
+			self.videos.delete(int(index))
 	
 	def playVideo(self):
-		#funcion de reproducir video
-		print 'entro'
+		index = self.videos.curselection()
+		item = self.videos.get(int(index[0]))
+		self.client.start_listening(item)
 
 class Login:
-	def __init__(self, master):
+	def __init__(self, master, client):
+		self.client = client
 		self.master = master
 		self.t = Frame(master)
 		self.t.pack()
@@ -70,13 +70,14 @@ class Login:
 		password = self.e2.get()
 		print username
 		print password
-		self.logged = True
+		self.logged = self.client.login()
 		self.t.pack_forget()
-		App(self.master)
+		App(self.master, self.client)
 
 
 
 root = Tk()
+client = Client()
 root.wm_title("Videos")
-login = Login(root)
+login = Login(root, client)
 root.mainloop()
