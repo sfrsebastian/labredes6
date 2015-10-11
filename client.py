@@ -54,11 +54,18 @@ class Client():
 			return False
 
 	def start_listening(self, video):
-		#Make post with video name
-		print 'video name ' + video
-		client = ClientUDP('239.255.0.1','9001')
-		print 'Stream Started'
-		client.listen(video)
+		query = "/labredes6-server/api/video-player/play/{videoName}".format(videoName=video)
+		self.connection.request("GET", url=query)
+		response = self.connection.getresponse()
+		if response.status == 200:
+			ans = response.read()
+			parsed = json.loads(ans)
+			print parsed
+			client = ClientUDP(parsed["ip"],parsed["port"])
+			client.listen(video)
+		else:
+			pass
+		
 
 	def add_video(self, name="", path=""):
 		if(name != "" and path != ""):
