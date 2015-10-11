@@ -1,25 +1,29 @@
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class Bash {
-	public static void main(String[] args) throws IOException {
-		ProcessBuilder pb = new ProcessBuilder("./src/stream.sh", "./src/video1.mp4");
-		Process p = pb.start();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-		String line = null;
+	public static void main(String args[]) {
 		try{
-			while ((line = reader.readLine()) != null)
-			{
-				System.out.println(line);
-			}
-		}
-		catch(Exception e){
-			
-		}
-		finally{
-			p.destroy();//Comando para matar proceso
-			System.out.println("Cerrado stream");
-		}
+            // for tilda expansion
+            //if (filepath.startsWith("~" + File.separator)) {
+                //filepath = System.getProperty("user.home") + filepath.substring(1);
+            //}
+
+            //ProcessBuilder builder = new ProcessBuilder("python", "-c", "import sys; import nltk; print \"whatever\"");
+            ProcessBuilder builder = new ProcessBuilder("/usr/local/bin/python", "src/ServerUDP.py", "src/video1.mp4");
+            builder.redirectErrorStream(true);
+            Process p = builder.start();
+            InputStream stdout = p.getInputStream();
+            BufferedReader reader = new BufferedReader (new InputStreamReader(stdout));
+
+            String line;
+            while ((line = reader.readLine ()) != null) {
+                System.out.println ("Stdout: " + line);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 	}
 }
