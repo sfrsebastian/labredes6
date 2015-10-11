@@ -1,9 +1,0 @@
-package co.certicamara.portalfunctionary.persistence.queryDefiners;
-
-import co.certicamara.portalfunctionary.persistence.queryDefiners.interfaces.IProcedureQueryDefiner;
-import co.certicamara.portalfunctionary.persistence.queryDefiners.interfaces.IRequestQueryDefiner;
-import co.certicamara.portalfunctionary.persistence.queryDefiners.postgres.PostgresProcedureQueryDefiner;
-
-public class PostgresQueryDefinerFactory implements IQueryDefinerFactory {
-
-}
