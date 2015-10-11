@@ -7,10 +7,10 @@ import pickle
 import struct
 
 BUFFER = 7680
-MCAST_GRP = '239.255.0.1'
-MCAST_PORT = 9001
+MCAST_GRP = sys.argv[1]
+MCAST_PORT = int(sys.argv[2])
 
-cap = cv2.VideoCapture(sys.argv[1])
+cap = cv2.VideoCapture(sys.argv[3])
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
 

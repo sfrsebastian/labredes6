@@ -20,7 +20,7 @@ class Client():
 	def start_listening(self, video):
 		#Make post with video name
 		print 'video name ' + video
-		client = ClientUDP()
+		client = ClientUDP('239.255.0.1','9001')
 		print 'Stream Started'
 		client.listen(video)
 

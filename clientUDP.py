@@ -6,10 +6,9 @@ import struct
 
 class ClientUDP():
 	BUFFER = 7680
-	MCAST_GRP = '239.255.0.1'
-	MCAST_PORT = 9001
-
-	def __init__(self):
+	def __init__(self, address, port):
+		self.MCAST_GRP = address
+		self.MCAST_PORT = int(port)
 		self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 		self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		self.sock.bind((self.MCAST_GRP, self.MCAST_PORT))
