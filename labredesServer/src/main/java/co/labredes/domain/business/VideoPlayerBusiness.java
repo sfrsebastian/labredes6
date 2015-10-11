@@ -1,6 +1,9 @@
 package co.labredes.domain.business;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +12,9 @@ import fj.data.Either;
 
 public class VideoPlayerBusiness {
 	
-	private final File folder = new File("/home/cis/workspace/labredes6");
+	private String path = "/home/cis/workspace/labredes6";
+	
+	private final File folder = new File(path);
 	
 	public VideoPlayerBusiness(){
 		
@@ -47,6 +52,32 @@ public class VideoPlayerBusiness {
 	    }
 	    
 	    return fileList;
+	}
+
+	public Either<IOException, String> uploadVideo(InputStream videoFile, String videoName) {
+		
+		Either<IOException, String> either = null;
+		
+		byte[] video;
+		
+		try {
+			
+			video = org.apache.commons.io.IOUtils.toByteArray(videoFile);
+			FileOutputStream fos = new FileOutputStream(path + "/" + videoName);
+			fos.write(video);
+			fos.close();
+			
+			String successMessage = "The video " + videoName + " was uploaded successfully";
+			
+			either = Either.right(successMessage);
+			
+		} catch (IOException e) {
+			
+			either = Either.left(e);
+			
+		}
+		
+		return either;
 	}
 
 }

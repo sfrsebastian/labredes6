@@ -258,22 +258,7 @@ public class Autheo extends Application<AutheoConfig> {
 		environment.healthChecks().register("redis", redisHealthCheck);
 	}
 	
-    /**
-     * Authentication filter
-     * @param environment
-     * @param tokenBusiness 
-     * @param roleBusiness 
-     */
-    private void addAutheoFilterAndProvider(Environment environment, TokenBusiness tokenBusiness, 
-            RoleBusiness roleBusiness) {
 
-        String urlPattern = "/*";
-        
-        TicketBusiness ticketBusiness = createTicketBusiness(tokenBusiness, roleBusiness);
-
-        environment.servlets().addFilter("autheoFilter", new InternalRequestFilter(ticketBusiness)).addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), true, urlPattern);
-        environment.jersey().register(InternalTokenDTOProvider.class);
-    }
     
     private void initializeRolesInCache(RoleBusiness roleBusiness) {
         
@@ -329,9 +314,6 @@ public class Autheo extends Application<AutheoConfig> {
 		//Initializes the role business
 		RoleBusiness roleBusiness = getRoleBusiness(dataSource, permissionSQLFactory, roleSQLFactory, jedisPool);
 		initializeRolesInCache(roleBusiness);
-		
-		//Initializes the internal authorization filter
-		addAutheoFilterAndProvider(environment, tokenBusiness, roleBusiness);
 
 		// Add health checks.
 		addSQLHealthCheck(environment, dataSource);
