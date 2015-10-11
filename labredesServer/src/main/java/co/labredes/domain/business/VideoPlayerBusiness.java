@@ -86,7 +86,7 @@ public class VideoPlayerBusiness {
 		
 		try{
 
-            ProcessBuilder builder = new ProcessBuilder("/usr/local/bin/python", "src/ServerUDP.py", "239.255.0.1", "9001", "src/video1.mp4");
+            ProcessBuilder builder = new ProcessBuilder("/usr/bin/python", "/home/cis/workspace/labredes6/ServerUDP.py", "239.255.0.1", "9001", "0");
             builder.redirectErrorStream(true);
             builder.start();
           
