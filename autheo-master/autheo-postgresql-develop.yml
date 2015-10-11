@@ -1,0 +1,32 @@
+http:
+
+  port: 9002
+  adminPort: 9003
+  rootPath: /api/*
+  
+logging:
+
+  level: INFO
+
+mySqlConfig:
+  
+  # the name of your JDBC driver
+  driverClass: org.postgresql.Driver
+
+  # the JDBC URL
+  url: jdbc:postgresql://localhost/autheodb
+
+  # the username
+  username: autheo
+    
+  # the password
+  password: Autheo1234
+  
+  removeAbandonedTimeoutInSeconds: 120
+  ableToRemoveAbandonedConnections: true
+
+redisConfig:
+
+  host: localhost
+  port: 6379
+  database: 0
