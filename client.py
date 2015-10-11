@@ -3,10 +3,11 @@ import threading
 import os
 from httplib import *
 import json
+import requests
 
 class Client():
 	connection = HTTPConnection("localhost",8081)
-	auth-connection = HTTPConnection("localhost",8080)
+	auth_connection = HTTPConnection("localhost",8080)
 
 	def __init__(self):
 		self.get_videos()
@@ -27,10 +28,12 @@ class Client():
 		if(name != "" and path != ""):
 			print name
 			print path
-			bol = os.path.isfile(path)
-			print bol
-			pass
-			#Make POST with File
+			file = open(path, 'rb')
+			print file
+			url = "http://localhost:8081/labredes6-server/api/video-player/upload/{videoName}".format(videoName=name+".mp4")
+			files = {'videoFile': open(path,'rb')}
+			headers = {'content-type': 'multipart/form-data'}
+			res = requests.post(url, files=files)
 
 	def get_videos(self):
 		query = "/labredes6-server/api/video-player"
