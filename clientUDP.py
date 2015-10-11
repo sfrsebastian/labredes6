@@ -28,6 +28,8 @@ class ClientUDP():
 					if cv2.waitKey(1) & 0xFF == ord ('q'):
 						self.close()
 					s=""
+		except:
+			pass
 		finally:
 			self.close()
 

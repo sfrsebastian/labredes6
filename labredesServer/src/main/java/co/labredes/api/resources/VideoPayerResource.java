@@ -85,7 +85,7 @@ public class VideoPayerResource {
 
         Response response = null;
 
-        Either<Exception, String> eitherResult = videoPlayerBusiness.playVideo();
+        Either<Exception, String> eitherResult = videoPlayerBusiness.playVideo(videoName);
 
         if (eitherResult.isLeft()) {
 

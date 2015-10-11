@@ -25,7 +25,7 @@ class App:
 			nombre_video = characterEntry.get()
 			filename = askopenfilename()
 			client.add_video(name=nombre_video, path = filename)
-			self.videos.insert(END, nombre_video)
+			self.videos.insert(END, nombre_video+'.mp4')
 			t.destroy()
 
 		t = Toplevel(root)  # Creates a new window

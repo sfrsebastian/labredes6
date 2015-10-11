@@ -55,10 +55,12 @@ class Client():
 
 	def start_listening(self, video):
 		query = "/labredes6-server/api/video-player/play/{videoName}".format(videoName=video)
+		print query
 		self.connection.request("GET", url=query)
 		response = self.connection.getresponse()
 		if response.status == 200:
 			ans = response.read()
+			print ans
 			parsed = json.loads(ans)
 			print parsed
 			client = ClientUDP(parsed["ip"],parsed["port"])

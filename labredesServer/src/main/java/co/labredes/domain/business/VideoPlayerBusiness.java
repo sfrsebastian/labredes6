@@ -12,9 +12,9 @@ import fj.data.Either;
 
 public class VideoPlayerBusiness {
 	
-	private String path = "/home/cis/workspace/labredes6";
+	private String path = "/Users/sfrsebastian/Desktop/labredes6";
 	
-	private final File folder = new File(path);
+	private final File folder = new File(path+"/videos");
 	
 	public VideoPlayerBusiness(){
 		
@@ -63,7 +63,7 @@ public class VideoPlayerBusiness {
 		try {
 			
 			video = org.apache.commons.io.IOUtils.toByteArray(videoFile);
-			FileOutputStream fos = new FileOutputStream(path + "/" + videoName);
+			FileOutputStream fos = new FileOutputStream(path + "/videos/" + videoName);
 			fos.write(video);
 			fos.close();
 			
@@ -80,7 +80,7 @@ public class VideoPlayerBusiness {
 		return either;
 	}
 
-	public Either<Exception, String> playVideo() {
+	public Either<Exception, String> playVideo(String videoName) {
 		
 		Either<Exception, String> either = null;
 		
@@ -89,11 +89,11 @@ public class VideoPlayerBusiness {
 		
 		try{
 
-            ProcessBuilder builder = new ProcessBuilder("/usr/bin/python", "/home/cis/workspace/labredes6/ServerUDP.py", ip, port, "0");
+            ProcessBuilder builder = new ProcessBuilder("/usr/local/bin/python", path + "/ServerUDP.py", ip, port, path+"/videos/" + videoName);
             builder.redirectErrorStream(true);
             builder.start();
           
-            String successMessage = "{\"ip\": " + ip + ", \"port\": " + port + "}";
+            String successMessage = "{\"ip\": " + "\"" + ip + "\"" + ", \"port\": " + "\"" + port + "\"" + "}";
             
             either = Either.right(successMessage);
             
