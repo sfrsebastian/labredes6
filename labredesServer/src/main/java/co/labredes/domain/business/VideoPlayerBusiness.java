@@ -84,13 +84,16 @@ public class VideoPlayerBusiness {
 		
 		Either<Exception, String> either = null;
 		
+		String ip = "239.255.0.1";
+		String port = "9001";
+		
 		try{
 
-            ProcessBuilder builder = new ProcessBuilder("/usr/bin/python", "/home/cis/workspace/labredes6/ServerUDP.py", "239.255.0.1", "9001", "0");
+            ProcessBuilder builder = new ProcessBuilder("/usr/bin/python", "/home/cis/workspace/labredes6/ServerUDP.py", ip, port, "0");
             builder.redirectErrorStream(true);
             builder.start();
           
-            String successMessage = "The video is streaming successfully";
+            String successMessage = "{\"ip\": " + ip + ", \"port\": " + port + "}";
             
             either = Either.right(successMessage);
             

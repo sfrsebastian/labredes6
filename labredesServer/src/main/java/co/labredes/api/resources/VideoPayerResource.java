@@ -80,6 +80,7 @@ public class VideoPayerResource {
 
     @GET
     @Path("/play/{videoName}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response reproduceVideo(@PathParam("videoName") String videoName) {
 
         Response response = null;
