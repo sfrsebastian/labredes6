@@ -80,4 +80,26 @@ public class VideoPlayerBusiness {
 		return either;
 	}
 
+	public Either<Exception, String> playVideo() {
+		
+		Either<Exception, String> either = null;
+		
+		try{
+
+            ProcessBuilder builder = new ProcessBuilder("/usr/local/bin/python", "src/ServerUDP.py", "239.255.0.1", "9001", "src/video1.mp4");
+            builder.redirectErrorStream(true);
+            builder.start();
+          
+            String successMessage = "The video is streaming successfully";
+            
+            either = Either.right(successMessage);
+            
+        } catch (Exception e){
+        	
+            either = Either.left(e);
+        }
+		
+		return either;
+	}
+
 }

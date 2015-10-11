@@ -73,10 +73,30 @@ public class VideoPayerResource {
     	} else {
     		
     		response = Response.status(500).entity(either.left().value().getMessage()).build();
-    		
     	}
     	
     	return response;
     }
 
+    @GET
+    @Path("/play/{videoName}")
+    public Response reproduceVideo(@PathParam("videoName") String videoName) {
+
+        Response response = null;
+
+        Either<Exception, String> eitherResult = videoPlayerBusiness.playVideo();
+
+        if (eitherResult.isLeft()) {
+
+            Exception exception = eitherResult.left().value();
+            response = Response.status(500).entity(exception.getMessage()).build();
+
+        } else {
+
+            String videoList = eitherResult.right().value();
+            response = Response.status(200).entity(videoList).build();
+        }
+
+        return response;
+    }
 }
