@@ -31,20 +31,21 @@ public class VideoPayerResource {
 	}
 	
     @GET
-    public Response getMovieList() {
+    public Response getVideoList() {
 
         Response response = null;
 
-        Either<IException, String> eitherResult = videoPlayerBusiness.getAlgo();
+        Either<IException, List<String>> eitherResult = videoPlayerBusiness.getVideoList();
 
         if (eitherResult.isLeft()) {
 
             IException exception = eitherResult.left().value();
+            response = Response.status(500).entity(exception.getErrorMessage()).build();
 
         } else {
 
-            String userTaskDTOList = eitherResult.right().value();
-            response = Response.status(200).entity(userTaskDTOList).build();
+            List<String> videoList = eitherResult.right().value();
+            response = Response.status(200).entity(videoList).build();
         }
 
         return response;

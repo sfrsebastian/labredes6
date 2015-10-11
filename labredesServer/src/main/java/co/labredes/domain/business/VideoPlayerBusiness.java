@@ -9,20 +9,19 @@ import fj.data.Either;
 
 public class VideoPlayerBusiness {
 	
-	final File folder = new File("/home/you/Desktop");
+	private final File folder = new File("/home/cis/workspace/labredes6");
 	
 	public VideoPlayerBusiness(){
 		
 	}
 	
-	public Either<IException, List<String>> getMovieList(){
-		try{
-			
+	public Either<IException, List<String>> getVideoList(){
+		
 		Either<IException, List<String>> either = null;
 		
-		File file = new File("/home/cis/workspace/labredes6");
+		try{
 		
-		List<String> fileList = listFilesForFolder(file);
+		List<String> fileList = listFilesForFolder(folder);
 		
 		either = Either.right(fileList);
 		
@@ -30,7 +29,7 @@ public class VideoPlayerBusiness {
 			
 		}
 		
-		return fileList;
+		return either;
 
 	}
 	
