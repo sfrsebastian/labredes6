@@ -11,7 +11,9 @@ class App:
 		frame.pack()
 
 		self.videos = Listbox(frame)
-		for video in client.videos:
+		videos = client.get_videos()
+		print videos
+		for video in videos:
 			self.videos.insert(END, video)
 		self.videos.grid(row = 1, column = 0, rowspan = 5)
 		charadd = Button(frame, text = " Agregar  ", command = self.addVideo).grid(row = 1, column = 1)
@@ -62,17 +64,29 @@ class Login:
 		self.e1.grid(row=2, column=3, columnspan=2)
 		self.e2.grid(row=3, column=3, columnspan=2)
 
-		btn = Button(self.t, text='Submit', command=self.login)
-		btn.grid(row=4, column=0, columnspan=5)
+		btn = Button(self.t, text='   Login   ', command=self.login)
+		btn.grid(row=4, column=1, columnspan=2)
+
+		btn = Button(self.t, text='Registrarse', command=self.signup)
+		btn.grid(row=4, column=3, columnspan=2)
 
 	def login(self):
 		username = self.e1.get()
 		password = self.e2.get()
 		print username
 		print password
-		self.logged = self.client.login()
-		self.t.pack_forget()
-		App(self.master, self.client)
+		self.logged = self.client.login(username,password)
+		if(self.logged):
+			self.t.pack_forget()
+			App(self.master, self.client)
+
+	def signup(self):
+		username = self.e1.get()
+		password = self.e2.get()
+		self.logged = self.client.signup(username,password)
+		if(self.logged):
+			self.t.pack_forget()
+			App(self.master, self.client)
 
 
 

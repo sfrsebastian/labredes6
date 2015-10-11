@@ -77,7 +77,8 @@ public class UserDAO {
 		prepareStatement.setString(2, user.getUsername());
 		prepareStatement.setString(3, passwordHash);
 		prepareStatement.setString(4, passwordSalt);
-		prepareStatement.setBoolean(5, user.isApiClient());
+		int num = user.isApiClient()?1:0;
+		prepareStatement.setInt(5, num);
 		prepareStatement.setString(6, user.getOrganizationId());
 		prepareStatement.setString(7, user.getRoleId());
 
