@@ -1,0 +1,29 @@
+INFO  [2015-10-11 23:13:48,749] io.dropwizard.server.ServerFactory: Starting LabredesServer
+INFO  [2015-10-11 23:13:48,926] org.eclipse.jetty.setuid.SetUIDListener: Opened LabredesServer@5d1659ea{HTTP/1.1}{0.0.0.0:8081}
+INFO  [2015-10-11 23:13:48,930] org.eclipse.jetty.server.Server: jetty-9.0.7.v20131107
+INFO  [2015-10-11 23:13:49,117] com.sun.jersey.server.impl.application.WebApplicationImpl: Initiating Jersey application, version 'Jersey: 1.18.1 02/19/2014 03:28 AM'
+INFO  [2015-10-11 23:13:49,354] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+
+    GET     /video-player (co.labredes.api.resources.VideoPayerResource)
+    GET     /video-player/play/{videoName} (co.labredes.api.resources.VideoPayerResource)
+    POST    /video-player/upload/{videoName} (co.labredes.api.resources.VideoPayerResource)
+
+INFO  [2015-10-11 23:13:49,934] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@2a2bb0eb{/labredes6-server/api,null,AVAILABLE}
+INFO  [2015-10-11 23:13:49,941] io.dropwizard.setup.AdminEnvironment: tasks = 
+
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+
+WARN  [2015-10-11 23:13:49,943] io.dropwizard.setup.AdminEnvironment: 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
+!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
+!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
+!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+INFO  [2015-10-11 23:13:49,953] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@47d93e0d{/labredes6-server/admin,null,AVAILABLE}
+INFO  [2015-10-11 23:13:50,073] org.eclipse.jetty.server.ServerConnector: Started LabredesServer@5d1659ea{HTTP/1.1}{0.0.0.0:8081}
+INFO  [2015-10-11 23:20:40,977] org.eclipse.jetty.server.ServerConnector: Stopped LabredesServer@5d1659ea{HTTP/1.1}{0.0.0.0:8081}
+INFO  [2015-10-11 23:20:40,979] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@47d93e0d{/labredes6-server/admin,null,UNAVAILABLE}
+INFO  [2015-10-11 23:20:40,980] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@2a2bb0eb{/labredes6-server/api,null,UNAVAILABLE}
