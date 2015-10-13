@@ -7,17 +7,16 @@ import requests
 import hashlib
 
 class Client():
-	connection = HTTPConnection("localhost",8081)
-	auth_connection = HTTPConnection("localhost",8080)
+	connection = HTTPConnection("localhost",8085)
 	
 	def login(self, username, password):
-		query = "/api/users/{username}/tokens".format(username=username)
+		query = "/login/api/users/{username}/tokens".format(username=username)
 		header = {"content-type":"application/json"}
 		password = hashlib.sha256(password).hexdigest()
 		print password
 		data = {"username":username, "password":password}
-		self.auth_connection.request("POST", query, json.dumps(data),header)
-		response = self.auth_connection.getresponse()
+		self.connection.request("POST", query, json.dumps(data),header)
+		response = self.connection.getresponse()
 		if response.status == 201:
 			ans = response.read()
 			parsed = json.loads(ans)
@@ -30,7 +29,7 @@ class Client():
 			return False
 
 	def signup(self, username, password):
-		query = "/api/users"
+		query = "/login//api/users"
 		header = {"content-type":"application/json"}
 		password = hashlib.sha256(password).hexdigest()
 		print password
@@ -40,8 +39,8 @@ class Client():
     			"apiClient":"true",
     			"organizationId":"algo",
     			"roleId":"algo"}
-		self.auth_connection.request("POST", query, json.dumps(data),header)
-		response = self.auth_connection.getresponse()
+		self.connection.request("POST", query, json.dumps(data),header)
+		response = self.connection.getresponse()
 		if response.status == 201:
 			ans = response.read()
 			parsed = json.loads(ans)
@@ -54,7 +53,7 @@ class Client():
 			return False
 
 	def start_listening(self, video):
-		query = "/labredes6-server/api/video-player/play/{videoName}".format(videoName=video)
+		query = "/videos/labredes6-server/api/video-player/play/{videoName}".format(videoName=video)
 		print query
 		self.connection.request("GET", url=query)
 		response = self.connection.getresponse()
@@ -81,7 +80,7 @@ class Client():
 			res = requests.post(url, files=files)
 
 	def get_videos(self):
-		query = "/labredes6-server/api/video-player"
+		query = "/videos/labredes6-server/api/video-player"
 		self.connection.request("GET", url=query)
 		response = self.connection.getresponse()
 		if response.status == 200:
